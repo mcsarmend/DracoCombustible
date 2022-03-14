@@ -1,48 +1,86 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('layouts/main', ['activePage' => 'login', 'title' => 'Light Bootstrap Dashboard Laravel by Creative Tim & UPDIVISION'])
 
-        <x-jet-validation-errors class="mb-4" />
-
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
+@section('content')
+    <div class="full-page section-image" data-color="black" data-image="{{ asset('img/full-screen-image-2.jpg') }}">
+        <div class="content pt-5">
+            <div class="container mt-5">    
+                <div class="col-md-4 col-sm-6 ml-auto mr-auto">
+                    <form class="form" method="POST" action="{{ route('login') }}">
+                        @csrf
+                        <div class="card card-login card-hidden">
+                            <div class="card-header ">
+                                <h3 class="header text-center">{{ __('Login') }}</h3>
+                            </div>
+                            <div class="card-body ">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="email" class="col-md-6 col-form-label">{{ __('E-Mail Address') }}</label>
+            
+                                        <div class="col-md-14">
+                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', 'admin@lightbp.com') }}" required autocomplete="email" autofocus>
+            
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password" class="col-md-6 col-form-label">{{ __('Password') }}</label>
+                
+                                            <div class="col-md-14">
+                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password', 'secret') }}" required autocomplete="current-password">
+                
+                                                @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <label class="form-check-label d-flex align-items-center">
+                                                    <input class="form-check-input" type="checkbox" name="remember"  id="remember">
+                                                    <span class="form-check-sign"></span>
+                                                    {{ __('Remember me') }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer ml-auto mr-auto">
+                                    <div class="container text-center" >
+                                        <button type="submit" class="btn btn-warning btn-wd">{{ __('Login') }}</button>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <a class="btn btn-link"  style="color:#23CCEF" href="{{ route('password.request') }}">
+                                        {{ __('Forgot password?') }}
+                                        </a>
+                                        <a class="btn btn-link" style="color:#23CCEF" href="{{ route('register') }}">
+                                            {{ __('Create account') }}
+                                        </a>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-        @endif
+        </div>
+    </div>
+@endsection
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+@push('js')
+    <script>
+        $(document).ready(function() {
+            demo.checkFullPageBackgroundImage();
 
-            <div>
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-jet-button class="ml-4">
-                    {{ __('Log in') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+            setTimeout(function() {
+                // after 1000 ms we add the class animated to the login/register card
+                $('.card').removeClass('card-hidden');
+            }, 700)
+        });
+    </script>
+@endpush

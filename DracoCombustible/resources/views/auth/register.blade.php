@@ -1,60 +1,108 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('layouts.main', ['activePage' => 'register', 'title' => 'Light Bootstrap Dashboard Laravel by Creative Tim & UPDIVISION'])
 
-        <x-jet-validation-errors class="mb-4" />
+@section('content')
+    <div class="full-page register-page section-image" data-color="orange" data-image="{{ asset('img/bg5.jpg') }}">
+        <div class="content">
+            <div class="container">
+                <div class="card card-register card-plain text-center">
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="col-md-5 ml-auto">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <div class="icon">
+                                            <i class="nc-icon nc-circle-09"></i>
+                                        </div>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4>{{ __('Free Account') }}</h4>
+                                        <p>{{ __('Here you can write a feature description for your dashboard, let the users know what is the value that you give them.') }}</p>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="media-left">
+                                        <div class="icon">
+                                            <i class="nc-icon nc-preferences-circle-rotate"></i>
+                                        </div>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4>{{ __('Awesome Performances') }}</h4>
+                                        <p>{{ __('Here you can write a feature description for your dashboard, let the users know what is the value that you give them.') }}</p>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="media-left">
+                                        <div class="icon">
+                                            <i class="nc-icon nc-planet"></i>
+                                        </div>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4>{{ __('Global Support') }}</h4>
+                                        <p>{{ __('Here you can write a feature description for your dashboard, let the users know what is the value that you give them.') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mr-auto">
+                                <form method="POST" action="{{ route('register') }}">
+                                    @csrf
+                                    <div class="card card-plain">
+                                        <div class="content">
+                                            <div class="form-group">
+                                                <input type="text" name="name" id="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') }}" required autofocus>
+                                            </div>
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+                                            <div class="form-group">   {{-- is-invalid make border red --}}
+                                                <input type="email" name="email" value="{{ old('email') }}" placeholder="Enter email" class="form-control" required>
+                                            </div>
 
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="password" class="form-control" required >
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="password_confirmation" placeholder="Password Confirmation" class="form-control" required autofocus>
+                                            </div>
+                                            <div class="form-group d-flex justify-content-center">
+                                                <div class="form-check rounded col-md-10 text-left">
+                                                    <label class="form-check-label text-white d-flex align-items-center">
+                                                        <input class="form-check-input" name="agree" type="checkbox" required >
+                                                        <span class="form-check-sign"></span>
+                                                        <b>{{ __('Agree with terms and conditions') }}</b>
+                                                    </label>
+                                                </div>
+                                            </div>
 
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
-
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
+                                            <div class="footer text-center">
+                                                <button type="submit" class="btn btn-fill btn-neutral btn-wd">{{ __('Create Free Account') }}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col">
+                                @foreach ($errors->all() as $error)
+                                    <div class="alert alert-warning alert-dismissible fade show" >
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close"> &times;</a>
+                                        {{ $error }}
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
-                    </x-jet-label>
+                    </div>
                 </div>
-            @endif
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
             </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+        </div>
+    </div>
+@endsection
+
+@push('js')
+    <script>
+        $(document).ready(function() {
+            demo.checkFullPageBackgroundImage();
+
+            setTimeout(function() {
+                // after 1000 ms we add the class animated to the login/register card
+                $('.card').removeClass('card-hidden');
+            }, 700)
+        });
+    </script>
+@endpush
