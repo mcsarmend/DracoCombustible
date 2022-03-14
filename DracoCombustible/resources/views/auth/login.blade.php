@@ -1,15 +1,15 @@
 @extends('layouts/main', ['activePage' => 'login', 'title' => 'Light Bootstrap Dashboard Laravel by Creative Tim & UPDIVISION'])
 
 @section('content')
-    <div class="full-page section-image" data-color="black" data-image="{{ asset('img/full-screen-image-2.jpg') }}">
+    <div class="full-page section-image" data-image="{{ asset('img/full-screen-image-2.jpg') }}">
         <div class="content pt-5">
             <div class="container mt-5">    
                 <div class="col-md-4 col-sm-6 ml-auto mr-auto">
                     <form class="form" method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="card card-login card-hidden">
-                            <div class="card-header ">
-                                <h3 class="header text-center">{{ __('Login') }}</h3>
+                            <div class="header text-center">
+                                <img src="{{ asset('img/KosmosLogo.svg') }}" >
                             </div>
                             <div class="card-body ">
                                 <div class="card-body">
@@ -17,7 +17,7 @@
                                         <label for="email" class="col-md-6 col-form-label">{{ __('E-Mail Address') }}</label>
             
                                         <div class="col-md-14">
-                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', 'admin@lightbp.com') }}" required autocomplete="email" autofocus>
+                                            <input placeholder="Username or Email" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"  required autocomplete="email" autofocus>
             
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
                                             <label for="password" class="col-md-6 col-form-label">{{ __('Password') }}</label>
                 
                                             <div class="col-md-14">
-                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password', 'secret') }}" required autocomplete="current-password">
+                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
                 
                                                 @error('password')
                                                     <span class="invalid-feedback" role="alert">
