@@ -6,8 +6,8 @@ Tip 2: you can also add an image using data-image tag
 -->
     <div class="sidebar-wrapper">
         <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text">
-                {{ __("Creative Tim") }}
+            <a href="/login" class="simple-text">
+                {{ __("Rastreo Kosmos") }}
             </a>
         </div>
         <ul class="nav">
