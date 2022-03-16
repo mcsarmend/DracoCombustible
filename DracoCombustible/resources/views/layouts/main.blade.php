@@ -55,7 +55,7 @@
      <script src="{{ asset('js/core/jquery.3.2.1.min.js') }}" type="text/javascript"></script>
      <script src="{{ asset('js/core/popper.min.js') }}" type="text/javascript"></script>
      <script src="{{ asset('js/core/bootstrap.min.js') }}" type="text/javascript"></script>
- 
+     <script src="https://kit.fontawesome.com/35382b5c0c.js" crossorigin="anonymous"></script>
      <script src="{{ asset('js/plugins/jquery.sharrre.js') }}"></script>
      <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
      <script src="{{ asset('js/plugins/bootstrap-switch.js') }}"></script>
@@ -71,55 +71,7 @@
      <script>
        $(document).ready(function () {
          
-         $('#facebook').sharrre({
-           share: {
-             facebook: true
-           },
-           enableHover: false,
-           enableTracking: false,
-           enableCounter: false,
-           click: function(api, options) {
-             api.simulateClick();
-             api.openPopup('facebook');
-           },
-           template: '<i class="fab fa-facebook-f"></i> Facebook',
-           url: 'https://light-bootstrap-dashboard-laravel.creative-tim.com/login'
-         });
- 
-         $('#google').sharrre({
-           share: {
-             googlePlus: true
-           },
-           enableCounter: false,
-           enableHover: false,
-           enableTracking: true,
-           click: function(api, options) {
-             api.simulateClick();
-             api.openPopup('googlePlus');
-           },
-           template: '<i class="fab fa-google-plus"></i> Google',
-           url: 'https://light-bootstrap-dashboard-laravel.creative-tim.com/login'
-         });
- 
-         $('#twitter').sharrre({
-           share: {
-             twitter: true
-           },
-           enableHover: false,
-           enableTracking: false,
-           enableCounter: false,
-           buttons: {
-             twitter: {
-               via: 'CreativeTim'
-             }
-           },
-           click: function(api, options) {
-             api.simulateClick();
-             api.openPopup('twitter');
-           },
-           template: '<i class="fab fa-twitter"></i> Twitter',
-           url: 'https://light-bootstrap-dashboard-laravel.creative-tim.com/login'
-         });
+
        });
      </script>
  </html>

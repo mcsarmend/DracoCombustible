@@ -1,15 +1,9 @@
 @extends('layouts.main', ['activePage' => 'dashboard', 'title' => 'Kosmos Rastreo', 'navName' => 'Dashboard', 'activeButton' => 'laravel'])
 
 @section('content')
-    <div class="content">
-        <div class="container-fluid">
-            <div id="map" style="  width: 100%;  height: 650px;"></div>
-            <script
-              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI9KYYmGxX3_PpRTjvzimwhlfRmemqH7g&callback=initMap&v=weekly&channel=2"
-              async
-            ></script>
-        </div>
-    </div>
+    <div id="map" style="  width: 100%;"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI9KYYmGxX3_PpRTjvzimwhlfRmemqH7g&callback=initMap&v=weekly&channel=2" async></script>
+
 @endsection
 
 @push('js')

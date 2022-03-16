@@ -50,6 +50,22 @@
     }
 }
 
+.tooltip .tooltip-content {
+    visibility: hidden;
+    display: inline-block;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    position: absolute;
+    z-index: 1;
+    margin-top: 20px
+}
+.tooltip:hover .tooltip-content {
+    visibility: visible;
+}
+
+
+
 /*           Font Smoothing      */
 
 body,
@@ -128,8 +144,8 @@ h6,
 }
 
 p {
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: 14px;
+    line-height: 1.0;
 }
 
 h1 small,
@@ -698,7 +714,9 @@ body>.navbar-collapse[data-color="purple"]:after {
     position: relative;
     float: right;
     width: calc(100% - 260px);
-    min-height: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 .main-panel>.content {
@@ -961,7 +979,7 @@ fieldset[disabled] .btn.active {
 .btn.btn-link:hover, .btn.btn-link:focus, .btn.btn-link:active {
     text-decoration: none;
     border-color: transparent;
-    color: #797979;
+    color: #333333;
 }
 
 .btn.btn-link {
@@ -1644,14 +1662,6 @@ fieldset[disabled] .btn-neutral.active {
     border-color: #9A9A9A;
 }
 
-.input-group .
-trol:first-child,
-.input-group-addon:first-child,
-.input-group-btn:first-child>.dropdown-toggle,
-.input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle) {
-    border-right: 0 none;
-}
-
 .input-group .form-control:last-child,
 .input-group-addon:last-child,
 .input-group-btn:last-child>.dropdown-toggle,
@@ -2040,13 +2050,14 @@ fieldset[disabled] .form-control {
 }
 
 .navbar .navbar-nav .nav-item .nav-link {
-    color: #888888;
+    color: #5f2828;
     padding: 10px 15px;
-    margin: 10px 3px;
+    margin: 10px 15px;
     position: relative;
     display: inline-flex;
     line-height: 40px;
 }
+
 
 .navbar .navbar-nav .nav-item .nav-link.btn {
     margin: 15px 3px;
@@ -2128,12 +2139,6 @@ fieldset[disabled] .form-control {
     font-size: 16px;
 }
 
-.navbar.fixed {
-    width: calc(100% - $sidebar-width);
-    right: 0;
-    left: auto;
-    border-radius: 0;
-}
 
 .navbar .nc-icon {
     font-weight: 700;
@@ -2370,7 +2375,7 @@ fieldset[disabled] .form-control {
 }
 
 .footer {
-    background-color: #FFFFFF;
+    background-color: #333333;
 }
 
 .footer .footer-menu {
@@ -2395,29 +2400,6 @@ fieldset[disabled] .form-control {
     color: #777777;
 }
 
-.footer .social-area {
-    padding: 15px 0;
-}
-
-.footer .social-area h5 {
-    padding-bottom: 15px;
-}
-
-.footer .social-area>a:not(.btn) {
-    color: #9A9A9A;
-    display: inline-block;
-    vertical-align: top;
-    padding: 10px 5px;
-    font-size: 20px;
-    font-weight: normal;
-    line-height: 20px;
-    text-align: center;
-}
-
-.footer .social-area>a:not(.btn):hover,
-.footer .social-area>a:not(.btn):focus {
-    color: #777777;
-}
 
 .footer .copyright {
     color: #777777;
@@ -2956,7 +2938,6 @@ Copyright (c) 2015 Daniel Eden
     top: 0;
     width: 1px;
     background-color: #DDDDDD;
-    card-body: "";
     position: absolute;
 }
 
@@ -3947,10 +3928,13 @@ Copyright (c) 2015 Daniel Eden
         transform-origin: 29px -50px;
     }
     .footer {
-        height: 60px;
+        height: 55px;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
     }
     .footer .footer-menu {
-        float: left;
+        float: right;
     }
     .footer .copyright {
         float: right;
@@ -4513,9 +4497,7 @@ Copyright (c) 2015 Daniel Eden
     .dropdown-menu {
         display: none;
     }
-    .navbar-fixed-top {
-        -webkit-backface-visibility: hidden;
-    }
+    
     #bodyClick {
         height: 100%;
         width: 100%;
@@ -4765,7 +4747,7 @@ License - nucleoapp.com/license/
     display: inline-block;
     font: normal normal normal 14px/1 'nucleo-icons';
     font-size: inherit;
-    speak: none;
+
     text-transform: none;
     /* Better Font Rendering */
     -webkit-font-smoothing: antialiased;
@@ -5489,13 +5471,8 @@ License - nucleoapp.com/license/
 }
 
 .full-page[data-color="black"]:after {
-    background: #797979;
-    background: -moz-linear-gradient(top, #797979 0%, #797979 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #797979), color-stop(100%, #797979));
-    background: -webkit-linear-gradient(top, #797979 0%, #797979 100%);
-    background: -o-linear-gradient(top, #797979 0%, #797979 100%);
-    background: -ms-linear-gradient(top, #797979 0%, #797979 100%);
-    background: linear-gradient(to bottom, #797979 0%, #797979 100%);
+    background: #333333;
+
     background-size: 150% 150%;
 }
 
